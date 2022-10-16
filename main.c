@@ -15,7 +15,7 @@ bool isNum(char c) {
 }
 
 void solveGame() {
-    
+
     color *right = calloc(1,sizeof(color));
     right->b = COLOR_GREEN;
     right->f = COLOR_BLACK;
@@ -30,13 +30,12 @@ void solveGame() {
         setTextBoxUserInput(getInteractableItem(currentScreen,i),c);
         getInteractableItem(currentScreen,i)->enabled = false;
         if(results[i] == r) {
-            getInteractableItem(currentScreen,i)->color = right;
-            getInteractableItem(currentScreen,i)->fcolor = right;
+            updateColor(getInteractableItem(currentScreen,i),right);
         }else{
-            getInteractableItem(currentScreen,i)->color = wrong;
-            getInteractableItem(currentScreen,i)->fcolor = wrong;
+            updateColor(getInteractableItem(currentScreen,i),right);
         }
     }
+    getInteractableItemByText(currentScreen,"Solve")->enabled = false;
     updateCurrentScreen();
 }
 
