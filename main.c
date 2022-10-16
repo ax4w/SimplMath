@@ -30,9 +30,9 @@ void solveGame() {
         setTextBoxUserInput(getInteractableItem(currentScreen,i),c);
         getInteractableItem(currentScreen,i)->enabled = false;
         if(results[i] == r) {
-            updateColor(getInteractableItem(currentScreen,i),right);
+            getInteractableItem(currentScreen,i)->bcolor = right;
         }else{
-            updateColor(getInteractableItem(currentScreen,i),right);
+            getInteractableItem(currentScreen,i)->bcolor = wrong;
         }
     }
     getInteractableItemByText(currentScreen,"Solve")->enabled = false;
@@ -180,6 +180,6 @@ int main(void) {
     WINDOW *w = initscr();
     if(w == NULL) exit(-1);
     setup();
-    setConfig(0, 0);
+    setConfig(10, 10);
     mainMenu();
 }
