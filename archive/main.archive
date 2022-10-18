@@ -180,6 +180,6 @@ int main(void) {
     WINDOW *w = initscr();
     if(w == NULL) exit(-1);
     setup();
-    setConfig(10, 10);
+    setConfig(9, 10);
     mainMenu();
 }
