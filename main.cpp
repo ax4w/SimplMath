@@ -39,8 +39,10 @@ void gameScreen() {
     if(minVal >= maxVal) return;
 
     game = new Screen("Game",40,20,'-','|');
-    Button *quit = new Button("Quit",1,19,COLOR_WHITE,COLOR_RED,&doQuit);
-    Button *solve = new Button("Solve",1,16,COLOR_WHITE,COLOR_GREEN, &doSolve);
+    Button *quit = new Button("Quit",1,19,COLOR_WHITE,COLOR_RED);
+    quit->onButtonPress = &doQuit;
+    Button *solve = new Button("Solve",1,16,COLOR_WHITE,COLOR_GREEN);
+    solve->onButtonPress = &doSolve;
 
 
     std::random_device rd; // obtain a random number from hardware
@@ -91,10 +93,12 @@ int main(void) {
     Screen *menu = new Screen("Menu",40,14,'-','|');
 
     Text *text = new Text("Welcome to SimplMath",1,1,COLOR_BLANK);
-    minimum = new TextBox("Minimum",1,3,4,COLOR_WHITE,COLOR_BLUE,&isNumber);
-    maximum = new TextBox("Maximum",1,5,4,COLOR_WHITE,COLOR_BLUE,&isNumber);
-    Button *play = new Button("Play",1,1,COLOR_WHITE,COLOR_GREEN,&gameScreen);
-    Button *quit = new Button("Quit",1,13,COLOR_WHITE,COLOR_RED,&doQuit);
+    minimum = new TextBox("Minimum",1,3,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber);
+    maximum = new TextBox("Maximum",1,5,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber);
+    Button *play = new Button("Play",1,1,COLOR_WHITE,COLOR_GREEN);
+    play->onButtonPress = &gameScreen;
+    Button *quit = new Button("Quit",1,13,COLOR_WHITE,COLOR_RED);
+    quit->onButtonPress = &doQuit;
 
 
     menu->addItem(text);
