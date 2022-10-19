@@ -3,6 +3,9 @@
 #include <random>
 #define TO_SOLVE 5
 
+using namespace sclui;
+
+
 static std::vector<int> results = {};
 
 TextBox *minimum = nullptr;
