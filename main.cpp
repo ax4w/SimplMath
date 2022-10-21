@@ -78,7 +78,7 @@ void gameScreen() {
         }
         textBoxText.append(std::to_string(num2));
         results.push_back(res);
-        TextBox *tb = new TextBox(textBoxText,1,1+yOffet,7,COLOR_WHITE,COLOR_BLUE,&tbFilter);
+        TextBox *tb = new TextBox(textBoxText,1,1+yOffet,7,COLOR_WHITE,COLOR_BLUE,&tbFilter, '=');
         yOffet += 2;
         game->addItem(tb);
         game->centerItem(game->X,tb);
@@ -92,12 +92,13 @@ void gameScreen() {
 
 
 int main(void) {
+    
     initSclui();
     Screen *menu = new Screen("Menu",40,14,'-','|');
 
     Text *text = new Text("Welcome to SimplMath",1,1,COLOR_BLANK);
-    minimum = new TextBox("Minimum",1,3,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber);
-    maximum = new TextBox("Maximum",1,5,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber);
+    minimum = new TextBox("Minimum",1,3,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber, '|');
+    maximum = new TextBox("Maximum",1,5,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber, '|');
     Button *play = new Button("Play",1,1,COLOR_WHITE,COLOR_GREEN);
     play->onButtonPress = &gameScreen;
     Button *quit = new Button("Quit",1,13,COLOR_WHITE,COLOR_RED);
