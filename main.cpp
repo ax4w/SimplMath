@@ -5,7 +5,6 @@
 
 using namespace sclui;
 
-
 static std::vector<int> results = {};
 
 TextBox *minimum = nullptr;
@@ -19,7 +18,10 @@ bool tbFilter(int c) {
 void doSolve() {
     for(int i = 0; i <= TO_SOLVE; i++) {
         TextBox *tb = (TextBox*) game->getItemAt(i);
-        int r = std::stoi(tb->getValue());
+
+        int r = -999;
+        if(tb->getValueLength() > 0)
+            int r = std::stoi(tb->getValue());
         if(r == results.at(i)) {
             tb->setColor(COLOR_GREEN);
         }else{
