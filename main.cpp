@@ -19,7 +19,7 @@ void doSolve() {
     for(int i = 0; i <= TO_SOLVE; i++) {
         TextBox *tb = (TextBox*) game->getItemAt(i);
 
-        int r = -999;
+        int r = -9999999;
         if(tb->getValueLength() > 0)
             r = std::stoi(tb->getValue());
         if(r == results.at(i)) {
