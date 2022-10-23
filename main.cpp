@@ -43,7 +43,7 @@ void gameScreen() {
 
     if(minVal >= maxVal) return;
 
-    game = new Screen("Game",40,20,'-','|',0,0);
+    game = new Screen("Game",40,20,0,0);
     Button *quit = new Button("Quit",1,19,COLOR_WHITE,COLOR_RED);
     quit->onButtonPress = &doQuit;
     Button *solve = new Button("Solve",1,16,COLOR_WHITE,COLOR_GREEN);
@@ -96,7 +96,7 @@ void gameScreen() {
 int main(void) {
     
     initSclui();
-    Screen *menu = new Screen("Menu",40,14,'-','|',0,0);
+    Screen *menu = new Screen("Menu",40,14,0,0);
 
     Text *text = new Text("Welcome to SimplMath",1,1,COLOR_BLANK);
     minimum = new TextBox("Minimum",1,3,4,COLOR_WHITE,COLOR_BLUE,&TextBoxFilterIsNumber, '|');
