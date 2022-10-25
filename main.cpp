@@ -1,5 +1,5 @@
 #include <curses.h>
-#include "./sclui/sclui.h" 
+#include "./sclui/sclui.hpp" 
 #include <random>
 #define TO_SOLVE 5
 
@@ -28,16 +28,16 @@ void myQuit() {
 
 void doSolve() {
     for(int i = 0; i <= TO_SOLVE; i++) {
-        TextBox *tb = (TextBox*) game.getItemAt(i);
+        TextBox *tb = (TextBox*) game.items.at(i);
 
         int r = -9999999;
-        if(tb->getValueLength() > 0)
-            r = std::stoi(tb->getValue());
+        if(tb->value.size() > 0)
+            r = std::stoi(tb->value);
         if(r == results.at(i)) {
             tb->setColor(COLOR_GREEN);
         }else{
             tb->setColor(COLOR_RED);
-            tb->setText(std::to_string(results.at(i)));
+            tb->value = std::to_string(results.at(i));
         }
         tb->setInteractable(false);
         tb->setColorFocus(COLOR_WHITE);
@@ -47,9 +47,9 @@ void doSolve() {
 }
 
 void gameScreen() {
-    if(minimum->getValueLength() == 0 || maximum->getValueLength() == 0) return;
-    int minVal = std::stoi(minimum->getValue());
-    int maxVal = std::stoi(maximum->getValue());
+    if(minimum->value.size() == 0 || maximum->value.size() == 0) return;
+    int minVal = std::stoi(minimum->value);
+    int maxVal = std::stoi(maximum->value);
 
     if(minVal >= maxVal) return;
 
